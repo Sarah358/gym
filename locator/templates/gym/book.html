@@ -1,0 +1,86 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'index'%}">Gym</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Book Gym</li>
+    </ol>
+  </nav>
+
+  <div class="card ">
+    <div class="card-body">
+      <form action="{% url 'book' %}" method="post">
+        {% include 'partials/_messages.html'%} {% csrf_token %}
+        <div class="form-group mt-2">
+          <label for="">Name</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            name="name"
+            value="{{values.name}}"
+          />
+        </div>
+         <div class="form-group mt-3">
+          <label for="">Package</label>
+          <select class="form-control" name="package">
+            {% for package in packages%}
+            <option name="package" value="{{package.name}}"
+              >{{package.name}}</option
+            >
+
+            {% endfor %}
+          </select>
+        </div> 
+        <div class="form-group mt-3">
+          <label for="">Gym Name</label>
+          <select class="form-control" name="gymname">
+            {% for gymname in gymnames%}
+            <option name="gymname" value="{{gymname.name}}"
+              >{{gymname.name}}</option
+            >
+
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group mt-3">
+          <label for="">Amount</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            name="amount"
+            value="{{values.amount}}"
+          />
+        </div>
+        <div class="form-group mt-3">
+          <label for="">Phone Number</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            name="phonenumber"
+            value="{{values.phonenumber}}"
+          />
+        </div>
+        <div class="form-group mt-3">
+          <label for="">Date</label>
+          <input
+            type="date"
+            class="form-control form-control-sm"
+            name="book_date"
+          />
+        </div>
+
+        <input
+          type="submit"
+          value="Submit"
+          class="btn btn-primary btn-primary mb-2"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,9 @@
+asgiref==3.4.1
+backports.zoneinfo==0.2.1
+Django==4.0
+dnspython==2.1.0
+filelock==3.4.2
+idna==3.3
+psycopg2-binary==2.9.2
+py3-validate-email==1.0.5
+sqlparse==0.4.2
